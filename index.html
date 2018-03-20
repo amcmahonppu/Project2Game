@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>RPG Game</title>
+<script src="jquery-3.3.1.min.js"></script>
+<script src="jquery-ui.min.js"></script>
+<link rel="stylesheet" href="jquery-ui.min.css">
+<style>
+	canvas {
+		background-color:  #ffe999;
+		width:  1024px;
+		height:  512px;
+		border:  4px black solid;
+	}
+	div.cont {
+		width:  1024px;
+		border:  4px black solid;
+		overflow: hidden;
+		height: 30px;
+		background-color:  #ff6600;
+	}
+	div.menu {
+		width: 30%;
+		display:  inline-block;
+		height:  30px;
+		text-align: center;
+	}
+	button {
+		border:none;
+		background:none;
+		font-family:  "Trebuchet MS";
+		font-size:  1em;
+		color:  #ffffff;
+		cursor: pointer;
+	}
+	div.body {
+		margin-left: auto;
+		margin-right: auto;
+		width: 1024px;
+		font-family:  "Trebuchet MS";
+		font-size:  1.5em;
+		color:  #ffffff;
+	}
+.charInfo {
+		margin-left: auto;
+		margin-right: auto;
+		color: black;
+	}
+	table, td{
+		width: 100%;
+		border: 1px solid black;
+	}
+</style>
+
+<script>
+$(function(){
+	$(".charInfo").hide();
+	$(".test1").click(function(){
+		$(".charInfo").show(400);
+}	);
+
+
+});
+</script>
+
+</head>
+
+<body>
+<div class="body">
+	<canvas id="map">HTML5 Support Required</canvas>
+	<table class="charInfo">
+		<tr>
+			<th>Health</th>
+			<th>Mana</th>
+			<th>Strength</th>
+			<th>Attack</th>
+			<th>Defence</th>
+			<th>Magic</th>
+		</tr>
+			<td>10</td>
+			<td>10</td>
+			<td>10</td>
+			<td>10</td>
+			<td>10</td>
+			<td>10</td>
+	</table>
+	<div class="cont">
+		<div class="menu"><button class="test1">Character Info</button></div>
+		<div class="menu"><button>Inventory Info</button></div>
+		<div class="menu"><button>Map</button></div>
+		<div class="menu">Game Options (reset/quit menus)</div>
+	</div>
+</div>
+</body>
+
+</html>
