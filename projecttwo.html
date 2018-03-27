@@ -81,21 +81,17 @@
 	    $(".charInfo").hide();
 	    $(".inventoryInfo").hide();
 	    $(".sudoku").hide();
-
 	    $(".test1").click(function(){
 		    $(".charInfo").show();
 		    $(".inventoryInfo").hide();
 	    });
-
 	    $(".inventoryButton").click(function(){
 		    $(".inventoryInfo").show();
 		    $(".charInfo").hide();
 	    });
-
 	    $(".options").click(function(){
 		    $(".sudoku").show();
 	    });
-
 	    $(".sudoku").click(function(){
 		    $(".sudoku").hide();
 		    $(".cont").hide();
@@ -111,11 +107,9 @@
 		    d3.selectAll("button").style("color", "black");
 		    d3.select(".head").text("Game Over").style("color", "white");
         });
-
         var canv = $("#map")[0].getContext('2d');
         canv.strokeStyle = '#000000';
         canv.fillStyle = '#ffffff';
-
         canv.clearRect(0, 0, 1024, 512);
         for (var x = 0; x < rpg.worldGrid; x++) {
             for (var y = 0; y < rpg.worldGrid[x]; y++) {
@@ -127,8 +121,6 @@
         }
     });
 
-
-    
 </script>
 
 </head>
@@ -136,13 +128,6 @@
 <body>
 	<h1 class="head">Github Guardians</h1>
 <div class="body">
-<<<<<<< HEAD
-<<<<<<< HEAD
-	<canvas id="map">HTML5 Support Required.</canvas>
-=======
-=======
-
->>>>>>> 7259d82b2d259e9a8f56260b5921e9969b40fea9
 	<canvas id="map">HTML5 Support Required</canvas>
 	<table class="charInfo">
 		<tr>
@@ -181,17 +166,11 @@
 		</tr>
 	</table>
 	<button class = "sudoku">Commit Sudoku</button>
-<<<<<<< HEAD
->>>>>>> af63eb0091279f9d091642b423372d18bbcaaf4f
 	<div class="cont">
 		<div class="menu"><button class="test1">Character Info</button></div>
 		<div class="menu"><button class="inventoryButton">Inventory Info</button></div>
 		<div class="menu"><button class="options">Game Options</button></div>
 	</div>
-=======
-
-
->>>>>>> 7259d82b2d259e9a8f56260b5921e9969b40fea9
 </div>
 </body>
 
