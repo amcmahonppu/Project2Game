@@ -9,12 +9,13 @@
 <script src="jquery-ui.min.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <link rel="stylesheet" href="jquery-ui.min.css">
+<script src="./rpg.js"></script>
 <style>
 	.head{
 		font-family: Trebuchet;
 		font-size: 50px;
 		text-align: center;
-		 color:  #ffffff;^M
+		color:  #ffffff;
 	}
 	canvas {
 		background-color:  #ffe999;
@@ -76,41 +77,58 @@
 </style>
 
 <script>
-$(function(){
-	$(".charInfo").hide();
-	$(".inventoryInfo").hide();
-	$(".sudoku").hide();
+    $(function(){
+	    $(".charInfo").hide();
+	    $(".inventoryInfo").hide();
+	    $(".sudoku").hide();
 
-	$(".test1").click(function(){
-		$(".charInfo").show();
-		$(".inventoryInfo").hide();
-	});
+	    $(".test1").click(function(){
+		    $(".charInfo").show();
+		    $(".inventoryInfo").hide();
+	    });
 
-	$(".inventoryButton").click(function(){
-		$(".inventoryInfo").show();
-		$(".charInfo").hide();
-	});
+	    $(".inventoryButton").click(function(){
+		    $(".inventoryInfo").show();
+		    $(".charInfo").hide();
+	    });
 
-	$(".options").click(function(){
-		$(".sudoku").show();
-	});
+	    $(".options").click(function(){
+		    $(".sudoku").show();
+	    });
 
-	$(".sudoku").click(function(){
-		$(".sudoku").hide();
-		$(".cont").hide();
-		d3.select("body").transition()
-    .style("background-color", "black");
-		d3.select(".menu").transition()
-    .style("background-color", "black");
-		d3.select(".cont").transition()
-    .style("background-color", "black");
-		d3.select("#map").transition()
-    .style("background-color", "black");
-		d3.selectAll(".menu").style("color", "black");
-		d3.selectAll("button").style("color", "black");
-		d3.select(".head").text("Game Over").style("color", "white");
-		});
-});
+	    $(".sudoku").click(function(){
+		    $(".sudoku").hide();
+		    $(".cont").hide();
+		    d3.select("body").transition()
+        .style("background-color", "black");
+		    d3.select(".menu").transition()
+        .style("background-color", "black");
+		    d3.select(".cont").transition()
+        .style("background-color", "black");
+		    d3.select("#map").transition()
+        .style("background-color", "black");
+		    d3.selectAll(".menu").style("color", "black");
+		    d3.selectAll("button").style("color", "black");
+		    d3.select(".head").text("Game Over").style("color", "white");
+        });
+
+        var canv = $("#map")[0].getContext('2d');
+        canv.strokeStyle = '#000000';
+        canv.fillStyle = '#ffffff';
+
+        canv.clearRect(0, 0, 1024, 512);
+        for (var x = 0; x < rpg.worldGrid; x++) {
+            for (var y = 0; y < rpg.worldGrid[x]; y++) {
+                canv.beginPath();
+                canv.rect(x * 16, y * 16, 16, 16);
+                canv.stroke();
+                if (rpg().worldGrid[x][y].land = "grass") canv.fill();
+            }
+        }
+    });
+
+
+    
 </script>
 
 </head>
@@ -128,12 +146,14 @@ $(function(){
 			<th>Defence</th>
 			<th>Magic</th>
 		</tr>
+        <tr>
 			<td>10</td>
 			<td>10</td>
 			<td>10</td>
 			<td>10</td>
 			<td>10</td>
 			<td>10</td>
+        </tr>
 	</table>
 	<table class="inventoryInfo">
 		<tr>
