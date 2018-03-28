@@ -4,23 +4,24 @@
 
 <head>
 
-<title>RPG Game</title>
+<title>Github Guardians</title>
 <script src="jquery-3.3.1.min.js"></script>
 <script src="jquery-ui.min.js"></script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <link rel="stylesheet" href="jquery-ui.min.css">
 <script src="./rpg.js"></script>
 <style>
+    body  {
+        color:  #000000;
+    }
 	.head{
 		font-family: Trebuchet;
 		font-size: 50px;
 		text-align: center;
-		color:  #ffffff;
+		color:  #000000;
 	}
 	canvas {
 		background-color:  #ffe999;
-		width:  1024px;
-		height:  512px;
 		border:  4px black solid;
 	}
 	div.cont {
@@ -50,56 +51,72 @@
 		width: 1024px;
 		font-family:  "Trebuchet MS";
 		font-size:  1.5em;
-		color:  #ffffff;
 	}
-.charInfo {
+    #charInfo, #invInfo {
 		margin-left: auto;
 		margin-right: auto;
-		color: black;
-	}
-.inventoryInfo {
-		margin-left: auto;
-		margin-right: auto;
-		color: black;
 	}
 	table{
 		width: 100%;
 		border: 1px solid black;
 	}
 	.sudoku {
-		color: black;
+		color: white;
+        background-color:  red;
+        border:  2px black solid;
 		text-align: center;
+        float: right;
+        position: relative;
 	}
 	tr, td, th{
 		text-align: center;
 		border: 1px solid black;
 	}
+    h3 {
+        margin: 0;
+        margin-bottom: -10px;
+    }
 </style>
 
 <script>
-    $(function(){
-	    $(".charInfo").hide();
-	    $(".inventoryInfo").hide();
-	    $(".sudoku").hide();
+    
+    $(function () {
 
-	    $(".test1").click(function(){
-		    $(".charInfo").show();
-		    $(".inventoryInfo").hide();
-	    });
+        var charInfoDisp = false;
+        var invInfoDisp = false;
+        var optionsDisp = false;
 
-	    $(".inventoryButton").click(function(){
-		    $(".inventoryInfo").show();
-		    $(".charInfo").hide();
-	    });
 
-	    $(".options").click(function(){
-		    $(".sudoku").show();
-	    });
+        $("#charInfo").hide();
+        $("#invInfo").hide();
 
+        $("#charButton").click(function () {
+            if (charInfoDisp === true) {
+                charInfoDisp = false;
+                $("#charInfo").hide();
+                $("#charButton").css("background-color", "#ff6600");
+            } else {
+                charInfoDisp = true;
+                $("#charInfo").show();
+                $("#charButton").css("background-color","#662200");
+            }
+        });
+        $("#invButton").click(function () {
+            if (invInfoDisp === true) {
+                invInfoDisp = false;
+                $("#invInfo").hide();
+                $("#invButton").css("background-color", "#ff6600");
+            } else {
+                invInfoDisp = true;
+                $("#invInfo").show();
+                $("#invButton").css("background-color", "#662200");
+            }
+        });
+        
 	    $(".sudoku").click(function(){
 		    $(".sudoku").hide();
 		    $(".cont").hide();
-		    d3.select("body").transition()
+            d3.select("body").transition()
         .style("background-color", "black");
 		    d3.select(".menu").transition()
         .style("background-color", "black");
@@ -117,12 +134,13 @@
         canv.fillStyle = '#ffffff';
 
         canv.clearRect(0, 0, 1024, 512);
-        for (var x = 0; x < rpg.worldGrid; x++) {
-            for (var y = 0; y < rpg.worldGrid[x]; y++) {
+        console.log(rpg);
+        for (var x = 0; x < rpg.worldGrid.length; x++) {
+            for (var y = 0; y < rpg.worldGrid[x].length; y++) {
                 canv.beginPath();
-                canv.rect(x * 16, y * 16, 16, 16);
+                canv.rect(x * 256, y * 256, 256, 256);
                 canv.stroke();
-                if (rpg().worldGrid[x][y].land = "grass") canv.fill();
+                if (rpg.worldGrid[x][y].land == "grass") canv.fill();
             }
         }
     });
@@ -134,52 +152,52 @@
 </head>
 
 <body>
-	<h1 class="head">Github Guardians</h1>
-<div class="body">
-	<canvas id="map">HTML5 Support Required</canvas>
-	<table class="charInfo">
-		<tr>
-			<th>Health</th>
-			<th>Mana</th>
-			<th>Strength</th>
-			<th>Attack</th>
-			<th>Defence</th>
-			<th>Magic</th>
-		</tr>
-        <tr>
-			<td>10</td>
-			<td>10</td>
-			<td>10</td>
-			<td>10</td>
-			<td>10</td>
-			<td>10</td>
-        </tr>
-	</table>
-	<table class="inventoryInfo">
-		<tr>
-			<th>Armor</th>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<th>Backpack</th>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
-	<button class = "sudoku">Commit Sudoku</button>
-	<div class="cont">
-		<div class="menu"><button class="test1">Character Info</button></div>
-		<div class="menu"><button class="inventoryButton">Inventory Info</button></div>
-		<div class="menu"><button class="options">Game Options</button></div>
-	</div>
-</div>
+    <button class="sudoku">Commit Sudoku</button>
+    <h3 class="head">Github Guardians</h3>
+    <div class="body">
+        <canvas id="map" width="1024" height="512">HTML5 Support Required</canvas>
+        <div class="cont">
+            <div class="menu"><button id="charButton">Character Info</button></div>
+            <div class="menu"><button id="invButton">Inventory Info</button></div>
+            <div class="menu"><button id="options">Game Options</button></div>
+        </div>
+        <table id="charInfo">
+            <tr>
+                <th>Health</th>
+                <th>Mana</th>
+                <th>Strength</th>
+                <th>Attack</th>
+                <th>Defence</th>
+                <th>Magic</th>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>10</td>
+                <td>10</td>
+                <td>10</td>
+                <td>10</td>
+                <td>10</td>
+            </tr>
+        </table>
+        <table id="invInfo">
+            <tr>
+                <th>Armor</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Backpack</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
 </body>
 
 </html>
