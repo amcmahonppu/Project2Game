@@ -18,7 +18,7 @@ var rpg = (function() {
 
     function generateDungeon() {
         var dung = [];
-        for (var i = 0; i < 16; i++) {
+        for (var i = 0; i < 32; i++) {
             dung[i] = [];
             for (var j = 0; j < 16; j++) {
                 var rnd = Math.random();
