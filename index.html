@@ -21,7 +21,7 @@
 		color:  #000000;
 	}
 	canvas {
-		background-color:  #ffe999;
+		background-color:  #666666;
 		border:  4px black solid;
 	}
 	div.cont {
@@ -135,12 +135,12 @@
 
         canv.clearRect(0, 0, 1024, 512);
         console.log(rpg);
-        for (var x = 0; x < rpg.worldGrid.length; x++) {
-            for (var y = 0; y < rpg.worldGrid[x].length; y++) {
+        for (var x = 0; x < rpg.worldGrid[0][0].length; x++) {
+            for (var y = 0; y < rpg.worldGrid[0][0][x].length; y++) {
                 canv.beginPath();
-                canv.rect(x * 256, y * 256, 256, 256);
+                canv.rect(x * 32, y * 32, 32, 32);
                 canv.stroke();
-                if (rpg.worldGrid[x][y].land == "grass") canv.fill();
+                if (rpg.worldGrid[0][0][x][y].land == "grass") canv.fill();
             }
         }
     });
