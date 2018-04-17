@@ -59,7 +59,9 @@ var rpg = (function() {
             "matt": matt,
             "mdef": mdef,
             "worldStart": [0, 0],
-            "dungStart": [0, 0]
+            "dungStart": [0, 0],
+            "currentWorld": [0, 0],
+            "currentDung": [2, 2]
         };
     };
 
