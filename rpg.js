@@ -58,10 +58,10 @@ var rpg = (function() {
             "def": def,
             "matt": matt,
             "mdef": mdef,
-            "worldStart": [0, 0],
-            "dungStart": [0, 0],
-            "currentWorld": [0, 0],
-            "currentDung": [2, 2]
+            "wX": 0,
+            "wY": 0,
+            "dX": 2,
+            "dY": 2
         };
     };
 
