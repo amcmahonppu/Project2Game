@@ -155,7 +155,6 @@ $(function () {
     name = $("#charName").val();
     d3.select(".welcome").text("Welcome to Github Guardians, " + name + "!");
     d3.select(".welcome").style("visibility", "visible");
-    rpg.setName(name);
   });
 
   $(".attValue").click(function(){
@@ -234,20 +233,20 @@ $(function () {
   main();
   $(document).on('keypress', function (event) {
     if (event.key === 'w') {
-      if (rpg.chr[0].dY !== 0) {
-        rpg.chr[0].dY -= 1;  // Move character up, unless they are at the top.
+      if (rpg.chr2[0].dY !== 0) {
+        rpg.chr2[0].dY -= 1;  // Move character up, unless they are at the top.
       }
     } else if (event.key === 's') {
-      if (rpg.chr[0].dY !== 15) {
-        rpg.chr[0].dY += 1;  // Move character down, unless they are at the bottom.
+      if (rpg.chr2[0].dY !== 15) {
+        rpg.chr2[0].dY += 1;  // Move character down, unless they are at the bottom.
       }
     } else if (event.key === 'a') {
-      if (rpg.chr[0].dX !== 0) {
-        rpg.chr[0].dX -= 1;  // Move character left, unless they are at left border.
+      if (rpg.chr2[0].dX !== 0) {
+        rpg.chr2[0].dX -= 1;  // Move character left, unless they are at left border.
       }
     } else if (event.key === 'd') {
-      if (rpg.chr[0].dX !== 31) {
-        rpg.chr[0].dX += 1;  // Move character right, unless they are at right border.
+      if (rpg.chr2[0].dX !== 31) {
+        rpg.chr2[0].dX += 1;  // Move character right, unless they are at right border.
       }
     }
   });
@@ -346,5 +345,6 @@ $(function () {
       </table>
     </div>
   </div>
+  <img src ="Github-Hero.png" id="Github-Hero" class="hide">
   </body>
   </html>
