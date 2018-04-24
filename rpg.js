@@ -132,6 +132,18 @@ var hp = 50;
 var mp = 15;
 var name = "temp";
 var chr2 = [];
+var totalStats = 0;
+var difference = 0;
+
+function isBalanced(att, def, matt, magd){
+  totalStats = (att-5)+(def-5)+(matt-5) + (magd-5);
+  console.log(totalStats);
+  if( totalStats <= 35){
+    return true;
+  }else{
+    return false;
+  };
+};
 
 function setTrue(str){
   value = str;
@@ -203,7 +215,8 @@ return {
   setTrue: setTrue,
   chrCreate2: chrCreate2,
   getChar: getChar,
-  chrCreate: chrCreate
+  chrCreate: chrCreate,
+  isBalanced: isBalanced
 };
 
 })();
