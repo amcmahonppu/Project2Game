@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Github Guardians API</title>
+  <style>
+  table, td {
+    border-collapse: collapse;
+    border: 1px solid black;
+  }
+  </style>
+</head>
+<body>
+  <h2>Github Guardians Api</h2>
+  This API is for the Github Guardians project. The project builds a world for the player to explore, battle, and collect items in. When you include rpg.js a global variable is created called partyorganizer. All methods should be called on this object. For example, we can set the type of the party by calling the <b>rpg.chrCreate2(name, hp, mp, att, def, matt, mdef)</b> Below you can find the API:<br><br>
+  <table>
+    <tr><td>Method Name</td><td>Parameters</td><td>Return Value</td></td><td>Description</td></tr>
+    <tr><td>isBalanced(att, def, matt, magd)</td><td><i> att, def, matt, magd:</i> Passes the value of the attack, defence, magic attack, and magic defense statistic</td><td>True or False</td></td><td>This method returns wether the custom stats chosen are balanced</td></tr>
+    <tr><td>generateDungeon()</td><td><i> none </i> </i></td><td>None</td>Dung<td>This method a randomly generated dungeon</td></tr>
+    <tr><td>setMagicDefence(md)</td><td><i> md: </i> Passes the user's selected magic defence</td><td>Magic defence value</td>Dung<td>This method sets the user's magic defence value</td></tr>
+    <tr><td>setMagicAttack(ma)</td><td><i> ma: </i> Passes the user's selected magic attack</td><td>Magic attack value</td>Dung<td>This method sets the user's magic attack value</td></tr>
+    <tr><td>setDefence(def)</td><td><i> def: </i> Passes the user's selected defence</td><td>Defence value</td>Dung<td>This method sets the user's defence value</td></tr>
+    <tr><td>setAttack(atk)</td><td><i> atk: </i> Passes the user's selected attack</td><td>Magic defence value</td>Dung<td>This method sets the user's attack value</td></tr>
+    <tr><td>generateDungeon()</td><td><i> none </i> </i></td><td>None</td>Dung<td>This method a randomly generated dungeon</td></tr>
+    <tr><td>chrCreate(name, hp, mp, att, def, matt, mdef)</td><td><i> name, hp, mp, att, def, matt, mdef: </i> Passes the values of the character name, hp, mp, attack, defence, magic attack and magic defence</i></td><td>chr[]</td><td>This method randomly generates a character each new game with predetermined parameters</td></tr>
+    <tr><td>chrCreate2(name, hp, mp, att, def, matt, mdef)</td><td><i> name, hp, mp, att, def, matt, mdef: </i> Passes the values of the character name, hp, mp, attack, defence, magic attack and magic defence</i></td><td> None </td><td>This method generates a character each new game with user inputed parameters</td></tr>
+    <tr><td>listen(cb)</td><td><i>cb:</i> is the callback function. This function will be called when the character moves. The grid is passed to the callback function</td><td>None</td><td>The listen(cb) functionality is used to track change in the model and receive notifications. This allows the UI to be updated when the model changes.</td></tr>
+  </table>
+</body>
+</html>

@@ -170,6 +170,9 @@ $(function () {
     rpg.setMagicDefence(magd);
   });
   $(".contMain").click(function () {
+    if(rpg.isUndefined(attack) === true){
+      alert("Please make sure you have accepted your selected values before continuing");
+    };
     if(rpg.isBalanced(attack, defence, maga, magd) === true){
       $(".first").hide();
       $(".second").show();
