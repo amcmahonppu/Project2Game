@@ -106,20 +106,84 @@ var value = 0;
     matt += rnd;
     rnd = randomInt(-5, 5);
     mdef += rnd;
-    return{
-      "name": name,
-      "maxhp": hp,
-      "hp": hp,
-      "mp": mp,
-      "att": att,
-      "def": def,
-      "matt": matt,
-      "mdef": mdef,
-      "wX": 0,
-      "wY": 0,
-      "dX": 2,
-      "dY": 2
-    };
+
+    // dir = direction character is facing.  0 = up, 1 = right, 2 = down, 3 = left
+
+    function ahead(dir) { // What lies ahead in the direction you are trying to move?
+        console.log(chr[0].wX, chr[0].wY, chr[0].dX, chr[0].dY);
+        if (dir === 0) {
+            if (chr[0].dY < 1 && chr[0].wY !== 0) { // Character Y axis hits level boundry
+                chr[0].wY -= 1;
+                chr[0].dY = 14;
+                return null;
+            }
+            return rpg.worldGrid[chr[0].wX][chr[0].wY][chr[0].dX][chr[0].dY - 1].land;  // What lies above the player?
+        }
+        if (dir === 1) {
+            if (chr[0].dX > 30 && chr[0].wX < 3) {
+                chr[0].wX += 1;
+                chr[0].dX = 0;
+                return null;
+            }
+            return rpg.worldGrid[chr[0].wX][chr[0].wY][chr[0].dX + 1][chr[0].dY].land; // What lies east of player?
+        }
+        if (dir === 2) {
+            if (chr[0].dY > 14 && chr[0].wY < 1) {  // Dungeon Y axis hits boundry, world boundry maxes out.
+                chr[0].wY += 1; // This will 100% produce an error when you hit the final bounds.
+                chr[0].dY = 0;
+                return null;
+            }
+            return rpg.worldGrid[chr[0].wX][chr[0].wY][chr[0].dX][chr[0].dY + 1].land;  // What lies south of player?
+        }
+        if (dir === 3) {
+            if (chr[0].dX < 1 && chr[0].wX !== 0) {
+                chr[0].wX -= 1;
+                chr[0].dX = 30;
+                return null;
+            }
+            return rpg.worldGrid[chr[0].wX][chr[0].wY][chr[0].dX - 1][chr[0].dY].land;  // What lies west of player?
+        }
+    }
+    // If ahead returns null and position is beyond the bounds, flip world or do nothing.
+    function move(dir) {
+        var moving = ahead(dir);  // Run function to see what lies ahead in the given direction.
+        if (dir === 0) {
+            if (moving === "grass") chr[0].dY -= 1;  // Move player's position based on given direction.
+            return null;
+        }
+        if (dir === 1) {
+            if (moving === "grass") chr[0].dX += 1;
+            return null;
+        }
+        if (dir === 2) {
+            if (moving === "grass") chr[0].dY += 1;
+            return null;
+        }
+        if (dir === 3) {
+            if (moving === "grass") chr[0].dX -= 1;
+            return null;
+        }
+        if (moving === null) {
+        }
+    }
+
+    return {
+        "name": name,
+        "maxhp": hp,
+        "hp": hp,
+        "mp": mp,
+        "att": att,
+        "def": def,
+        "matt": matt,
+        "mdef": mdef,
+        "wX": 0,
+        "wY": 0,
+        "dX": 2,
+        "dY": 0,
+        "dir": 1,
+        ahead: ahead,
+        move: move
+    };  // Return all front facing items for a character.
   };
 var chr = [];
 chr[0] = chrCreate("Kat", 50, 15, 15, 9, 9, 13);
